@@ -1,10 +1,10 @@
 import React from "react";
-import './inputform.css'
+import styles from './CSS/InputForm.module.css'
 
 function InputForm(props) {
     return (
         <form onSubmit={props.handleAddTodo}>
-            <input className="new-todo" 
+            <input className={styles.new_todo}
             onChange={props.handleChangeTodo} 
             type="text" 
             name="todo"
