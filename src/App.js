@@ -13,11 +13,11 @@ class App extends React.Component {
         this.state = {
             todos: [],
             todo: '',
-            reselect: 1,
+            reselect: "all",
         };
     }
 
-    addTodo = e => {
+    addTodo = (e) => {
         e.preventDefault();
         if (!this.state.todo) { return; }
         const newTodo = { task: this.state.todo, completed: false, id: Date.now() };
@@ -27,7 +27,7 @@ class App extends React.Component {
         });
     }
 
-    changeTodo = e => {
+    changeTodo = (e) => {
         this.setState({ todo: e.target.value });
     }
 
@@ -36,7 +36,7 @@ class App extends React.Component {
         this.setState({ todos });
     }
 
-    toggleTodoComplete = id => {
+    toggleTodoComplete = (id) => {
         let todos = this.state.todos.slice();
         todos = todos.map(todo => {
             if (todo.id === id) {
@@ -47,16 +47,7 @@ class App extends React.Component {
         this.setState({ todos });
     }
 
-    setAllTodoComplete = () => {
-        let todos = this.state.todos.slice();
-        todos = todos.map(todo => {
-            todo.completed = true;
-            return todo;
-        });
-        this.setState({ todos });
-    }
-
-    clearCompletedTodos = e => {
+    clearCompletedTodos = () => {
         let todos = this.state.todos.filter(todo => !todo.completed);
         this.setState({ todos });
     }
@@ -94,13 +85,13 @@ class App extends React.Component {
                     </span>
                     <ul className="filters">
                         <li className="filters_li">
-                            <a href="#" className={this.state.reselect === 1 ? "selected aa" : "aa"} onClick={() => this.viewTodos(1)}>All</a>
+                            <a href="#" className={this.state.reselect === "all" ? "selected_filter_btn" : "filter_btn"} onClick={() => this.viewTodos("all")}>All</a>
                         </li>
                         <li className="filters_li">
-                            <a href="#" className={this.state.reselect === 2 ? "selected aa" : "aa"} onClick={() => this.viewTodos(2)}>Active</a>
+                            <a href="#" className={this.state.reselect === "active" ? "selected_filter_btn" : "filter_btn"} onClick={() => this.viewTodos("active")}>Active</a>
                         </li>
                         <li className="filters_li">
-                            <a href="#" className={this.state.reselect === 3 ? "selected aa" : "aa"} onClick={() => this.viewTodos(3)}>Completed</a>
+                            <a href="#" className={this.state.reselect === "completed" ? "selected_filter_btn" : "filter_btn"} onClick={() => this.viewTodos("completed")}>Completed</a>
                         </li>
                     </ul>
                     <button className="button clear_completed" onClick={this.clearCompletedTodos}>Clear completed [{countCompletedTasks}]

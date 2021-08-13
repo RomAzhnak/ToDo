@@ -4,10 +4,10 @@ import Todo from "./Todo";
 function TodoList(props) {
     let todos = props.todos;
     switch(props.reselect) {
-        case 2: 
+        case "active": 
             todos = props.todos.filter(todo=> !todo.completed);
             break;
-        case 3: 
+        case "completed": 
             todos = props.todos.filter(todo=> todo.completed);
             break;
     }
