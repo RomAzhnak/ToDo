@@ -18,7 +18,10 @@ const App = () => {
 
   const { countCompletedTasks, countActiveTasks } = useMemo(() => {
     // console.log('RECALCULATED')
-    const countCompletedTasks = stateTodos.todos.filter(todo => todo.completed).length;
+    const countCompletedTasks = stateTodos.todos.filter
+      (
+        todo => todo.completed
+      ).length;
     const countActiveTasks = stateTodos.todos.length - countCompletedTasks;
 
     return {
@@ -46,28 +49,38 @@ const App = () => {
           <li className="filters_li">
             <a
               href="#"
-              className={stateTodos.reselect === "all" ? "selected_filter_btn" : "filter_btn"}
+              className={stateTodos.reselect === "all" ?
+                "selected_filter_btn" :
+                "filter_btn"
+              }
               onClick={() => handleVisibilityFilter('all')}
             >
               All
             </a>
           </li>
           <li className="filters_li">
-            <a href="#" className={stateTodos.reselect === "active" ? "selected_filter_btn" : "filter_btn"}
+            <a href="#" className={stateTodos.reselect === "active" ?
+              "selected_filter_btn" :
+              "filter_btn"
+            }
               onClick={() => handleVisibilityFilter('active')}
             >
               Active
             </a>
           </li>
           <li className="filters_li">
-            <a href="#" className={stateTodos.reselect === "completed" ? "selected_filter_btn" : "filter_btn"}
+            <a href="#" className={stateTodos.reselect === "completed" ?
+              "selected_filter_btn" :
+              "filter_btn"
+            }
               onClick={() => handleVisibilityFilter('completed')}
             >
               Completed
             </a>
           </li>
         </ul>
-        <button className="button clear_completed" onClick={handleClearTodos}
+        <button className="button clear_completed"
+          onClick={handleClearTodos}
         >
           Clear completed [{countCompletedTasks}]
         </button>
