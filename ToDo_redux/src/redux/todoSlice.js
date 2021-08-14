@@ -21,15 +21,24 @@ export const todoSlice = createSlice({
 			state.todos.push(todo);
 		},
 		toggleTodoComplete: (state, action) => {
-			state.todos = state.todos.map(todo => (todo.id === action.payload.id) ? 
-																						{ ...todo, completed: !todo.completed } : 
-																						todo);
+			state.todos = state.todos.map
+				(
+					todo => (todo.id === action.payload.id) ?
+						{ ...todo, completed: !todo.completed } :
+						todo
+				);
 		},
 		deleteTodoById: (state, action) => {
-			state.todos = state.todos.filter((todo) => todo.id !== action.payload.id);
+			state.todos = state.todos.filter
+				(
+					todo => todo.id !== action.payload.id
+				);
 		},
 		clearCompletedTodos: (state, action) => {
-			state.todos = state.todos.filter(todo => !todo.completed);
+			state.todos = state.todos.filter
+				(
+					todo => !todo.completed
+				);
 		},
 		visibilityFilter: (state, action) => {
 			state.reselect = action.payload;
@@ -46,5 +55,3 @@ export const {
 } = todoSlice.actions;
 
 export default todoSlice.reducer;
-// export const { visibilityFilter } = todoSlice.actions;
-// export default todoSlice.reducer

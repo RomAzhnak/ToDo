@@ -4,36 +4,19 @@ import { useSelector } from 'react-redux';
 // import { createSelector } from 'reselect';
 import { visibleTodos } from "../selectors";
 
-// const visibleTodos = createSelector(
-//   (todos) => todos,
-//   (_, reselect) => reselect,
-//   (todos, visibilityFilter) => {
-//     switch (visibilityFilter) {
-//       case 'all':
-//         return todos;
-//       case 'completed':
-//         return todos.filter(todo => todo.completed);
-//       case 'active':
-//         return todos.filter(todo => !todo.completed);
-//       default:
-//         return todos;
-//     }
-//   }
-// )
-
 const TodoList = () => {
 
-  const matchingCount = useSelector((state) =>
+  const filteringTodos = useSelector((state) =>
     visibleTodos(state.todos.todos, state.todos.reselect)
   )
 
   // useEffect(() => {
-  //   console.log('matchingCount', matchingCount)
-  // }, [matchingCount])
+  //   console.log('filteringTodos', filteringTodos)
+  // }, [filteringTodos])
 
   return (
     <ul className="todo-list">
-      {matchingCount.map(todo => (
+      {filteringTodos.map(todo => (
         <Todo
           key={todo.id}
           id={todo.id}

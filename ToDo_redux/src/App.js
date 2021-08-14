@@ -11,13 +11,13 @@ const App = () => {
   const handleClearTodos = () => {
     dispatch(clearCompletedTodos())
   };
-  // let reselect = 'all';
+
   const handleVisibilityFilter = (reselect) => {
     dispatch(visibilityFilter(reselect));
   }
 
   const { countCompletedTasks, countActiveTasks } = useMemo(() => {
-    console.log('RECALCULATED')
+    // console.log('RECALCULATED')
     const countCompletedTasks = stateTodos.todos.filter(todo => todo.completed).length;
     const countActiveTasks = stateTodos.todos.length - countCompletedTasks;
 
@@ -54,7 +54,10 @@ const App = () => {
           </li>
           <li className="filters_li">
             <a href="#" className={stateTodos.reselect === "active" ? "selected_filter_btn" : "filter_btn"}
-              onClick={() => handleVisibilityFilter('active')}>Active</a>
+              onClick={() => handleVisibilityFilter('active')}
+            >
+              Active
+            </a>
           </li>
           <li className="filters_li">
             <a href="#" className={stateTodos.reselect === "completed" ? "selected_filter_btn" : "filter_btn"}
